@@ -1,16 +1,20 @@
 # fpga_chaotic_chameleon_system
-Verilog project of simple chaotic chameleon system implementation in FPGA. Contains a project for Tang Nano 20k board (IDE GoWin).
+Verilog project of simple chaotic chameleon system implementation in FPGA. Contains a project for Tang Nano 20k board (IDE GoWin), and folder with simulation testbenches for all important modules.
 
 #### References
 
-1. Xueqing Liu, ... Ning Wang (2025).
-   "Simple Chaotic Chameleon System with Cosine Function".  
-   *Journal*, *67*(5), 892-896. https://doi.org/xx.xxxx/TCSII.2020.xxxxxxx  
+1. Xueqing Liu, Bo Sang, Chun Wang, Yan Liu, Cuicui Wang, Irfan Ahmad, Timur Karimov, Vyacheslav Rybin, Denis Butusov, and Ning Wang (2025).
+   "Chameleon dynamics in a simple 3D system: bifurcation analysis and hardware-based validation".  
+   *Journal*, *XX*(X), XXX-XXX. https://doi.org/xx.xxxx/xxxxxxx  
 
 # COS Chameleon System in FPGA (Tang Nano 20k)
 
 ## Project Overview
 This project implements a chaotic oscillator system on Tang Nano 20k FPGA board. The system models a set of differential equations that exhibit chaotic behavior, using fixed-point arithmetic and CORDIC-based cosine calculations.
+
+<img src="https://github.com/user-attachments/assets/25de5ee0-5490-4a09-a03f-1e0a75d6b01b" alt="drawing" width="472"/>
+
+<img src="https://github.com/user-attachments/assets/38eafe9e-ca3c-42b4-852f-f5aa79bba9ce" alt="drawing" width="480"/>
 
 ## Key Features
 - **Chaotic System Modeling**: Implements the chameleon chaotic oscillator system with three state variables (X, Y, Z)
@@ -39,6 +43,8 @@ This project implements a chaotic oscillator system on Tang Nano 20k FPGA board.
 4. **cos_cordic_q610** (CORDIC cosine calculator)
    - Calculates cosine values using CORDIC algorithm
    - Optimized for Q6.10 fixed-point format
+  
+<img width="1000" alt="schematic" src="https://github.com/user-attachments/assets/7b7992fe-da20-4775-bba8-af3a71a517fc" />
 
 ### Supporting Modules
 - `mult_shifted`: Fixed-point multiplier with proper scaling
