@@ -12,9 +12,9 @@ Verilog project of simple chaotic chameleon system implementation in FPGA. Conta
 ## Project Overview
 This project implements a chaotic oscillator system on Tang Nano 20k FPGA board. The system models a set of differential equations that exhibit chaotic behavior, using fixed-point arithmetic and CORDIC-based cosine calculations.
 
-<img src="https://github.com/user-attachments/assets/25de5ee0-5490-4a09-a03f-1e0a75d6b01b" alt="drawing" width="472"/>
+<img src="https://github.com/user-attachments/assets/2b4c4116-381c-4e27-9bf2-b3f277088fad" alt="drawing" width="480"/>
 
-<img src="https://github.com/user-attachments/assets/38eafe9e-ca3c-42b4-852f-f5aa79bba9ce" alt="drawing" width="480"/>
+<img src="https://github.com/user-attachments/assets/eb2ce059-1c41-4981-9493-621886c59cff" alt="drawing" width="480"/>
 
 ## Key Features
 - **Chaotic System Modeling**: Implements the chameleon chaotic oscillator system with three state variables (X, Y, Z)
