@@ -5,7 +5,7 @@ Verilog project of simple chaotic chameleon system implementation in FPGA. Conta
 
 1. Xueqing Liu, Bo Sang, Chun Wang, Yan Liu, Cuicui Wang, Irfan Ahmad, Timur Karimov, Vyacheslav Rybin, Denis Butusov, and Ning Wang (2025).
    "Chameleon dynamics in a simple 3D system: bifurcation analysis and hardware-based validation".  
-   *Journal*, *XX*(X), XXX-XXX. https://doi.org/xx.xxxx/xxxxxxx  
+   *International Journal of Bifurcation and Chaos*, under review (state for 24-09-2025)
 
 # COS Chameleon System in FPGA (Tang Nano 20k)
 
