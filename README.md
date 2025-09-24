@@ -7,7 +7,7 @@ Verilog project of simple chaotic chameleon system implementation in FPGA. Conta
    "Chameleon dynamics in a simple 3D system: bifurcation analysis and hardware-based validation".  *International Journal of Bifurcation and Chaos*, under review (state for 24-09-2025)
 
 #### MATLAB chaotic system design
-Before implemented in FPGA, the design was developed and verified in MATLAB. Appropriate simulation files and description find in a folder 'MATLAB_Sang_Codes'.
+Before being implemented in FPGA, the design was developed and verified in MATLAB. Appropriate simulation files and description find in a folder 'MATLAB_Sang_Codes'.
 
 # Chaotic Chameleon System in FPGA
 
