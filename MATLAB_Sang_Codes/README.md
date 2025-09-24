@@ -28,7 +28,7 @@
   - Implements fixed-point arithmetic using scaling factors and manual rounding
   - Word length limitation is currently not considered
 
-### `verilog_output_visualization.m`
+#### `verilog_output_visualization.m`
 - **Purpose**: Visualization of Verilog simulation results
 - **Key Features**:
   - Reads output from Verilog cos_chaos simulation
