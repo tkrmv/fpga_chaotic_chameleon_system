@@ -35,9 +35,9 @@ $$
 $$
 
 Where:
-- a, b, c, μ, ω are system parameters. Typical values: 
-- X, Y, Z are state variables
-- cos(ωY) is calculated using CORDIC
+- $a$, $b$, $c$, $\mu$, $\omega$ are system parameters. Typical values: 
+- $X$, $Y$, $Z$ are state variables
+- $cos(\omega Y)$ is calculated using CORDIC
 Systems shows different dynamics for different initial conditions. 
 
 ## Numerical Integration with Heun Method
