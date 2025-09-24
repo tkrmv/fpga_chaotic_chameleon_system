@@ -56,16 +56,16 @@ $k_2 = f(t_n + h, y_n + hk_1);$
 
 $y_{n+1} = y_n + \frac{h}{2}(k_1 + k_2).$
 
-For chameleon ODE system under consideration, this results in:
-
+For chameleon ODE system under consideration, this results in following. 
 First half-step:
-    
-$dX = -Y;$
 
-$dY = X + c * Y + a * Z;$
-
-$dZ = -mu * Z + b * \cos(\omega * Y) ;$
-
+$$
+\begin{cases}
+dX = -Y;\\
+dY = X + c * Y + a * Z;\\
+dZ = -mu * Z + b * \cos(\omega * Y) ;
+\end{cases}
+$$
 Update state variables:
 
 $X_{pred} = X + dX;$
