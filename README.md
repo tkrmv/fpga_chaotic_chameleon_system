@@ -37,9 +37,9 @@ $$
 Where:
 - $a$, $b$, $c$, $\mu$, $\omega$ are system parameters. Typical values: $a = 2.5$, $b = 1$, $c = 0$, $\mu = 1$, $\omega = 1.85$, though parameters have great impact on system dynamics.
 - $x$, $y$, $z$ are state variables
-- $cos(\omega Y)$ is calculated using CORDIC
+- $\cos(\omega Y)$ is calculated using CORDIC
   
-Systems shows different dynamics for different initial conditions. Possible example: $(x_0, x_0, z_0) = (0, 5, 0)$;
+Systems shows different dynamics for different initial conditions. Possible example: $(x_0, x_0, z_0) = (0, 5, 0)$.
 
 ## Numerical Integration with Heun Method
 
