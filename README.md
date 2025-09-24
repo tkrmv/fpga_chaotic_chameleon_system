@@ -17,11 +17,11 @@ This project implements a chaotic oscillator system on Tang Nano 20k FPGA board.
 <img src="https://github.com/user-attachments/assets/eb2ce059-1c41-4981-9493-621886c59cff" alt="drawing" width="480"/>
 
 ## Key Features
-- **Chaotic System Modeling**: Implements the chameleon chaotic oscillator system with three state variables (X, Y, Z)
-- **Fixed-Point Arithmetic**: Uses 16-bit fixed-point numbers with 10 fractional bits for calculations
-- **CORDIC Implementation**: Cosine calculation using 10-stage CORDIC algorithm and argument augmentation to the range [-9π/2, 9π/2]
-- **Runge-Kutta Integration**: 2nd-order numerical integration (Heun method) for solving differential equation
-- **FPGA-Optimized Design**: Calculation core controlled by state machine for efficient FPGA implementation
+- **Chaotic System Simulation**: Implements the chameleon chaotic oscillator system with three state variables ($x$, $y$, $z$). A chameleon chaotic system is a type of system that exhibits a chaotic attractor which can switch between being a hidden attractor and a self-excited attractor, based on the parameter values. In the particluar case, parameter $c$ defines the type of dynamics. 
+- **Fixed-Point Arithmetic**: Uses 16-bit fixed-point numbers with 10 fractional bits for calculations.
+- **CORDIC Algorithm**: Cosine calculation using 10-stage CORDIC algorithm and argument augmentation to the range [-9π/2, 9π/2].
+- **Runge-Kutta Integration**: 2nd-order numerical integration (Heun method) for solving differential equation.
+- **FPGA-Optimized Design**: Calculation core controlled by state machine for efficient FPGA implementation.
 
 ## Differential Equations
 The system implements the following chaotic equations:
@@ -47,32 +47,41 @@ Heun's method is a second-order Runge-Kutta method used to solve ordinary differ
 
 $y' = f(t, y), \quad y(t_0) = y_0$
 
-Heun's method is a two stage single-step numerical scheme.
+Heun's method is a two stage single-step numerical scheme. 
+Given a step size $h$, such as $t_{n+1} = t_n + h$, the method proceeds as follows:
 
-Given a step size $h$, the method proceeds as follows:
+$$
+k_1 = f(t_n, y_n);
+k_2 = f(t_n + h, y_n + hk_1);
+y_{n+1} = y_n + \frac{h}{2}(k_1 + k_2).
+$$
 
-$k_1 = f(t_n, y_n)$
+For chameleon ODE system under consideration, this results in:
 
-$k_2 = f(t_n + h, y_n + hk_1)$
-
-$y_{n+1} = y_n + \frac{h}{2}(k_1 + k_2)$
-
-$t_{n+1} = t_n + h$
-
-\subsection*{Algorithm Steps}
-
-For $n = 0, 1, 2, \ldots$:
-
-\begin{enumerate}
-\item Compute the slope at the beginning of the interval:
-$k_1 = f(t_n, y_n)$
-\item Compute the slope at the end of the interval using Euler's method:
-$k_2 = f(t_n + h, y_n + hk_1)$
-\item Update the solution using the average of the two slopes:
-$y_{n+1} = y_n + \frac{h}{2}(k_1 + k_2)$
-\item Advance the independent variable:
-$t_{n+1} = t_n + h$
-\end{enumerate}
+    First half-step:
+    $$
+        dX = -Y;
+        dY = X + c*Y + a*Z;
+        dZ = -mu * Z + b * cos(omega * Y) ;
+$$
+   Update state variables:
+  $$      
+        X_{pred} = X + dX;
+        Y_{pred} = Y + dY;
+        Z_{pred} = Z + dZ;
+$$
+        Second half-step
+  $$
+        dX_{pred} = -Y_{pred};
+        dY_{pred} = X_{pred} + c*Y_{pred} + a*Z_{pred};
+        dZ_{pred} = -mu * Z_{pred} + b * cos(omega * Y_{pred}) ;
+$$
+        Merge results:
+  $$
+        X = X + round(half_h * (dX + dX_pred) / frac_scale);
+        Y = Y + round(half_h * (dY + dY_pred) / frac_scale);
+        Z = Z + round(half_h * (dZ + dZ_pred) / frac_scale);
+$$
 
 ## System Architecture
 
