@@ -63,17 +63,19 @@ $$
 \begin{cases}
 dX = -Y;\\
 dY = X + c * Y + a * Z;\\
-dZ = -mu * Z + b * \cos(\omega * Y) ;
+dZ = -\mu * Z + b * \cos(\omega * Y) ;
 \end{cases}
 $$
 
 Update state variables:
 
-$X_{pred} = X + dX;$
-
-$Y_{pred} = Y + dY;$
-
-$Z_{pred} = Z + dZ;$
+$$
+\begin{align}
+\X_{pred} = X + dX;\\
+\Y_{pred} = Y + dY;\\
+\Z_{pred} = Z + dZ;
+\end{align}
+$$
 
 Second half-step
 
