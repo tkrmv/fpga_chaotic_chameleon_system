@@ -66,6 +66,7 @@ dY = X + c * Y + a * Z;\\
 dZ = -mu * Z + b * \cos(\omega * Y) ;
 \end{cases}
 $$
+
 Update state variables:
 
 $X_{pred} = X + dX;$
