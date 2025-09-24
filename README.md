@@ -1,13 +1,12 @@
 # fpga_chaotic_chameleon_system
 Verilog project of simple chaotic chameleon system implementation in FPGA. Contains a project for Tang Nano 20k board (IDE GoWin), and folder with simulation testbenches for all important modules.
 
+Before being implemented in FPGA, the design was developed and verified in MATLAB. Appropriate simulation files and description find in a folder `MATLAB_Sang_Codes`.
+
 #### References
 
 1. Xueqing Liu, Bo Sang, Chun Wang, Yan Liu, Cuicui Wang, Irfan Ahmad, Timur Karimov, Vyacheslav Rybin, Denis Butusov, and Ning Wang (2025).
    "Chameleon dynamics in a simple 3D system: bifurcation analysis and hardware-based validation".  *International Journal of Bifurcation and Chaos*, under review (state for 24-09-2025)
-
-#### MATLAB chaotic system design
-Before being implemented in FPGA, the design was developed and verified in MATLAB. Appropriate simulation files and description find in a folder 'MATLAB_Sang_Codes'.
 
 # Chaotic Chameleon System in FPGA
 
