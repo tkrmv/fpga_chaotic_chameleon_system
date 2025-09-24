@@ -7,10 +7,10 @@ Verilog project of simple chaotic chameleon system implementation in FPGA. Conta
    "Chameleon dynamics in a simple 3D system: bifurcation analysis and hardware-based validation".  
    *International Journal of Bifurcation and Chaos*, under review (state for 24-09-2025)
 
-# COS Chameleon System in FPGA (Tang Nano 20k)
+# Chaotic Chameleon System in FPGA
 
 ## Project Overview
-This project implements a chaotic oscillator system on Tang Nano 20k FPGA board. The system models a set of differential equations that exhibit chaotic behavior, using fixed-point arithmetic and CORDIC-based cosine calculations.
+This project implements a chaotic oscillator system which was verified on Tang Nano 20k FPGA board. The system models a set of differential equations that exhibit chaotic behavior, using fixed-point arithmetic and CORDIC-based cosine calculations.
 
 <img src="https://github.com/user-attachments/assets/2b4c4116-381c-4e27-9bf2-b3f277088fad" alt="drawing" width="480"/>
 
