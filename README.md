@@ -35,7 +35,7 @@ $$
 $$
 
 Where:
-- $a$, $b$, $c$, $\mu$, $\omega$ are system parameters. Typical values: $a = 2.5$, $b = 1$, $c = 0$, $\mu = 1$, $\omega = 1.85$, though parameters have great impact on system dynamics.
+- $a$, $b$, $c$, $\mu$, $\omega$ are system parameters. Typical values: $a = 2.5$, $b = 1$, $c = -0.01$, $\mu = 1$, $\omega = 1.85$, though parameters have great impact on system dynamics.
 - $x$, $y$, $z$ are state variables
 - $\cos(\omega Y)$ is calculated using CORDIC
   
@@ -99,6 +99,8 @@ $$
 
 ## System Architecture
 
+<img width="1000" alt="schematic" src="https://github.com/user-attachments/assets/7b7992fe-da20-4775-bba8-af3a71a517fc" />
+
 ### Main Modules
 1. **cos_chaos_top** (Top-level module)
    - Interfaces with board peripherals (LEDs, UART)
@@ -118,7 +120,6 @@ $$
    - Calculates cosine values using CORDIC algorithm
    - Optimized for Q6.10 fixed-point format
   
-<img width="1000" alt="schematic" src="https://github.com/user-attachments/assets/7b7992fe-da20-4775-bba8-af3a71a517fc" />
 
 ### Supporting Modules
 - `mult_shifted`: Fixed-point multiplier with proper scaling
