@@ -94,8 +94,8 @@ Merge results:
 $$
 \begin{align}
 X = X + \dfrac{h}{2} (dX + dX_{pred});\\
-Y = Y + \dfrac{h}{2} * (dY + dY_{pred});\\
-Z = Z + \dfrac{h}{2} * (dZ + dZ_{pred}); 
+Y = Y + \dfrac{h}{2} (dY + dY_{pred});\\
+Z = Z + \dfrac{h}{2} (dZ + dZ_{pred}); 
 \end{align}
 $$
 
