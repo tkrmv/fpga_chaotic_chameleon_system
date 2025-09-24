@@ -23,6 +23,30 @@ This project implements a chaotic oscillator system on Tang Nano 20k FPGA board.
 - **Runge-Kutta Integration**: 2nd-order numerical integration (Heun method) for solving differential equation
 - **FPGA-Optimized Design**: Calculation core controlled by state machine for efficient FPGA implementation
 
+## Differential Equations
+The system implements the following chaotic equations:
+dX/dt = -Y
+dY/dt = X + c*Y + a*Z
+dZ/dt = -μ*Z + b*cos(ωY)
+
+Where:
+- a, b, c, μ, ω are system parameters. Typical values: 
+- X, Y, Z are state variables
+- cos(ωY) is calculated using CORDIC
+Systems shows different dynamics for different initial conditions. 
+
+## Numerical Integration with Heun Method
+Heun method is a two stage single-step numerical scheme. Generally, it is presented as follows:
+
+Ỹₙ₊₁ = Yₙ + h·F(tₙ, Yₙ)
+Yₙ₊₁ = Yₙ + (h/2)·[F(tₙ, Yₙ) + F(tₙ₊₁, Ỹₙ₊₁)]
+
+where:
+Yₙ - state vector at time tₙ
+h - time step size
+Ỹₙ₊₁ - predicted state at tₙ₊₁
+Yₙ₊₁ - corrected state at tₙ₊₁
+
 ## System Architecture
 
 ### Main Modules
@@ -49,15 +73,6 @@ This project implements a chaotic oscillator system on Tang Nano 20k FPGA board.
 ### Supporting Modules
 - `mult_shifted`: Fixed-point multiplier with proper scaling
 - `mult_h_sum`: Combined multiply-and-add operation for integration steps
-
-## Differential Equations
-The system implements the following chaotic equations:
-...
-
-Where:
-- a, b, c, μ, ω are system parameters
-- X, Y, Z are state variables
-- cos(ωY) is calculated using CORDIC
 
 ## Implementation Details
 
