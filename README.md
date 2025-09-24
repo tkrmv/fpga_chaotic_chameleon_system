@@ -50,22 +50,20 @@ $y' = f(t, y), \quad y(t_0) = y_0$
 Heun's method is a two stage single-step numerical scheme. 
 Given a step size $h$, such as $t_{n+1} = t_n + h$, the method proceeds as follows:
 
-$$
-\begin{equation}
-k_1 = f(t_n, y_n);\\
-k_2 = f(t_n + h, y_n + hk_1);\\
-y_{n+1} = y_n + \frac{h}{2}(k_1 + k_2).
-\end{equation}
-$$
+$k_1 = f(t_n, y_n);$
+
+$k_2 = f(t_n + h, y_n + hk_1);$
+
+$y_{n+1} = y_n + \frac{h}{2}(k_1 + k_2).$
 
 For chameleon ODE system under consideration, this results in:
 
-    First half-step:
-    $$
-        dX = -Y;
-        dY = X + c*Y + a*Z;
-        dZ = -mu * Z + b * cos(omega * Y) ;
-$$
+First half-step:
+    
+        $dX = -Y;$
+        $dY = X + c*Y + a*Z;$
+        $dZ = -mu * Z + b * cos(omega * Y) ;$
+
    Update state variables:
   $$      
         X_{pred} = X + dX;
