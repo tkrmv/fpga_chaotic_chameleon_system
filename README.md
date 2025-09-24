@@ -25,9 +25,14 @@ This project implements a chaotic oscillator system on Tang Nano 20k FPGA board.
 
 ## Differential Equations
 The system implements the following chaotic equations:
-dX/dt = -Y
-dY/dt = X + c*Y + a*Z
-dZ/dt = -μ*Z + b*cos(ωY)
+
+$$
+\begin{cases}
+\frac{dX}{dt} = -Y \\
+\frac{dY}{dt} = X + cY + aZ \\
+\frac{dZ}{dt} = -\mu Z + b\cos(\omega Y)
+\end{cases}
+$$
 
 Where:
 - a, b, c, μ, ω are system parameters. Typical values: 
