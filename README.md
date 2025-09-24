@@ -28,29 +28,51 @@ The system implements the following chaotic equations:
 
 $$
 \begin{cases}
-\frac{dX}{dt} = -Y \\
-\frac{dY}{dt} = X + cY + aZ \\
-\frac{dZ}{dt} = -\mu Z + b\cos(\omega Y)
+\frac{dx}{dt} = -y \\
+\frac{dy}{dt} = x + cy + az \\
+\frac{dz}{dt} = -\mu z + b\cos(\omega y)
 \end{cases}
 $$
 
 Where:
-- $a$, $b$, $c$, $\mu$, $\omega$ are system parameters. Typical values: 
-- $X$, $Y$, $Z$ are state variables
+- $a$, $b$, $c$, $\mu$, $\omega$ are system parameters. Typical values: $a = 2.5$, $b = 1$, $c = 0$, $\mu = 1$, $\omega = 1.85$, though parameters have great impact on system dynamics.
+- $x$, $y$, $z$ are state variables
 - $cos(\omega Y)$ is calculated using CORDIC
-Systems shows different dynamics for different initial conditions. 
+  
+Systems shows different dynamics for different initial conditions. Possible example: $(x_0, x_0, z_0) = (0, 5, 0)$;
 
 ## Numerical Integration with Heun Method
-Heun method is a two stage single-step numerical scheme. Generally, it is presented as follows:
 
-Ỹₙ₊₁ = Yₙ + h·F(tₙ, Yₙ)
-Yₙ₊₁ = Yₙ + (h/2)·[F(tₙ, Yₙ) + F(tₙ₊₁, Ỹₙ₊₁)]
+Heun's method is a second-order Runge-Kutta method used to solve ordinary differential equations of the form:
 
-where:
-Yₙ - state vector at time tₙ
-h - time step size
-Ỹₙ₊₁ - predicted state at tₙ₊₁
-Yₙ₊₁ - corrected state at tₙ₊₁
+$y' = f(t, y), \quad y(t_0) = y_0$
+
+Heun's method is a two stage single-step numerical scheme.
+
+Given a step size $h$, the method proceeds as follows:
+
+$k_1 = f(t_n, y_n)$
+
+$k_2 = f(t_n + h, y_n + hk_1)$
+
+$y_{n+1} = y_n + \frac{h}{2}(k_1 + k_2)$
+
+$t_{n+1} = t_n + h$
+
+\subsection*{Algorithm Steps}
+
+For $n = 0, 1, 2, \ldots$:
+
+\begin{enumerate}
+\item Compute the slope at the beginning of the interval:
+$k_1 = f(t_n, y_n)$
+\item Compute the slope at the end of the interval using Euler's method:
+$k_2 = f(t_n + h, y_n + hk_1)$
+\item Update the solution using the average of the two slopes:
+$y_{n+1} = y_n + \frac{h}{2}(k_1 + k_2)$
+\item Advance the independent variable:
+$t_{n+1} = t_n + h$
+\end{enumerate}
 
 ## System Architecture
 
