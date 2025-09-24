@@ -62,9 +62,9 @@ First half-step:
     
 $dX = -Y;$
 
-$dY = X + c*Y + a*Z;$
+$dY = X + c * Y + a * Z;$
 
-$dZ = -mu * Z + b * cos(omega * Y) ;$
+$dZ = -mu * Z + b * \cos(\omega * Y) ;$
 
 Update state variables:
 
@@ -78,9 +78,9 @@ Second half-step
 
 $dX_{pred} = -Y_{pred};$
 
-$dY_{pred} = X_{pred} + c*Y_{pred} + a*Z_{pred};$
+$dY_{pred} = X_{pred} + c * Y_{pred} + a * Z_{pred};$
 
-$dZ_{pred} = -mu * Z_{pred} + b * cos(omega * Y_{pred}) ;$
+$dZ_{pred} = -mu * Z_{pred} + b * \cos(\omega * Y_{pred}) ;$
 
 Merge results:
 
