@@ -123,7 +123,7 @@ $$
    - Implements Q6.10 fixed-point format
   
 5. **mult_shifted**
-Fixed-point multiplier with proper scaling for fixed-point arithmetic: $c = a \cdot b / 2^{fraction \, length}$.
+Fixed-point multiplier with proper scaling for fixed-point arithmetic: $c = a \cdot b / 2^{fraction \! length}$.
 
 6. **mult_h_sum**
 Combined multiply-and-add operation for integration steps in a single module.
