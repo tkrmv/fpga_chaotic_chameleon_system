@@ -71,27 +71,31 @@ Update state variables:
 
 $$
 \begin{align}
-\X_{pred} = X + dX;\\
-\Y_{pred} = Y + dY;\\
-\Z_{pred} = Z + dZ;
+X_{pred} = X + dX;\\
+Y_{pred} = Y + dY;\\
+Z_{pred} = Z + dZ;
 \end{align}
 $$
 
-Second half-step
+Second half-step:
 
-$dX_{pred} = -Y_{pred};$
-
-$dY_{pred} = X_{pred} + c * Y_{pred} + a * Z_{pred};$
-
-$dZ_{pred} = -mu * Z_{pred} + b * \cos(\omega * Y_{pred}) ;$
+$$
+\begin{cases}
+dX_{pred} = -Y_{pred};\\
+dY_{pred} = X_{pred} + c * Y_{pred} + a * Z_{pred};\\
+dZ_{pred} = -mu * Z_{pred} + b * \cos(\omega * Y_{pred}) ;
+\end{cases}
+$$
 
 Merge results:
 
-$X = X + h/2 * (dX + dX_{pred});$
-
-$Y = Y + h/2 * (dY + dY_{pred});$
-
-$Z = Z + h/2 * (dZ + dZ_{pred});$
+$$
+\begin{align}
+X = X + h/2 * (dX + dX_{pred});\\
+Y = Y + h/2 * (dY + dY_{pred});\\
+Z = Z + h/2 * (dZ + dZ_{pred});
+\end{align}
+$$
 
 ## System Architecture
 
