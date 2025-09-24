@@ -83,7 +83,7 @@ $$
 \begin{cases}
 dX_{pred} = -Y_{pred};\\
 dY_{pred} = X_{pred} + c Y_{pred} + a Z_{pred};\\
-dZ_{pred} = -mu Z_{pred} + b * \cos(\omega Y_{pred}) ;
+dZ_{pred} = -mu Z_{pred} + b \cos(\omega Y_{pred}) ;
 \end{cases}
 $$
 
