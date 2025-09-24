@@ -61,24 +61,33 @@ For chameleon ODE system under consideration, this results in:
 First half-step:
     
 $dX = -Y;$
+
 $dY = X + c*Y + a*Z;$
+
 $dZ = -mu * Z + b * cos(omega * Y) ;$
 
 Update state variables:
 
 $X_{pred} = X + dX;$
+
 $Y_{pred} = Y + dY;$
+
 $Z_{pred} = Z + dZ;$
 
 Second half-step
 
 $dX_{pred} = -Y_{pred};$
+
 $dY_{pred} = X_{pred} + c*Y_{pred} + a*Z_{pred};$
+
 $dZ_{pred} = -mu * Z_{pred} + b * cos(omega * Y_{pred}) ;$
 
 Merge results:
+
 $X = X + h/2 * (dX + dX_{pred});$
+
 $Y = Y + h/2 * (dY + dY_{pred});$
+
 $Z = Z + h/2 * (dZ + dZ_{pred});$
 
 ## System Architecture
