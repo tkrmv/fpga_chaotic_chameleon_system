@@ -62,8 +62,8 @@ First half-step:
 $$
 \begin{cases}
 dX = -Y;\\
-dY = X + c * Y + a * Z;\\
-dZ = -\mu * Z + b * \cos(\omega * Y) ;
+dY = X + c Y + a Z;\\
+dZ = -\mu Z + b \cos(\omega Y) ;
 \end{cases}
 $$
 
@@ -82,8 +82,8 @@ Second half-step:
 $$
 \begin{cases}
 dX_{pred} = -Y_{pred};\\
-dY_{pred} = X_{pred} + c * Y_{pred} + a * Z_{pred};\\
-dZ_{pred} = -mu * Z_{pred} + b * \cos(\omega * Y_{pred}) ;
+dY_{pred} = X_{pred} + c Y_{pred} + a Z_{pred};\\
+dZ_{pred} = -mu Z_{pred} + b * \cos(\omega Y_{pred}) ;
 \end{cases}
 $$
 
@@ -91,9 +91,9 @@ Merge results:
 
 $$
 \begin{align}
-X = X + h/2 * (dX + dX_{pred});\\
-Y = Y + h/2 * (dY + dY_{pred});\\
-Z = Z + h/2 * (dZ + dZ_{pred});
+X = X + \dfrac{h}{2} (dX + dX_{pred});\\
+Y = Y + \dfrac{h}{2} * (dY + dY_{pred});\\
+Z = Z + \dfrac{h}{2} * (dZ + dZ_{pred});
 \end{align}
 $$
 
