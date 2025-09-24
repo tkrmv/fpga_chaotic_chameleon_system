@@ -41,7 +41,7 @@ Where:
   
 Systems shows different dynamics for different initial conditions. Possible example: $(x_0, x_0, z_0) = (0, 5, 0)$.
 
-## Numerical Integration with Heun Method
+## Numerical Integration with Heun's Method
 
 Heun's method is a second-order Runge-Kutta method used to solve ordinary differential equations of the form:
 
@@ -101,7 +101,7 @@ $$
 
 <img width="1000" alt="schematic" src="https://github.com/user-attachments/assets/7b7992fe-da20-4775-bba8-af3a71a517fc" />
 
-### Main Modules
+### Modules
 1. **cos_chaos_top** (Top-level module)
    - Interfaces with board peripherals (LEDs, UART)
    - Manages system reset and user input via button
@@ -118,65 +118,43 @@ $$
 
 4. **cos_cordic_q610** (CORDIC cosine calculator)
    - Calculates cosine values using CORDIC algorithm
-   - Optimized for Q6.10 fixed-point format
+   - Implements Q6.10 fixed-point format
   
+5. **mult_shifted**
+Fixed-point multiplier with proper scaling for fixed-point arithmetic: $c = a \dot b / 2^{fraction_length}$.
 
-### Supporting Modules
-- `mult_shifted`: Fixed-point multiplier with proper scaling
-- `mult_h_sum`: Combined multiply-and-add operation for integration steps
+6. **mult_h_sum**
+Combined multiply-and-add operation for integration steps in a single module.
 
 ## Implementation Details
 
-### Fixed-Point Format
-- Q6.10 format (16-bit total, 6 integer bits, 10 fractional bits)
-- All calculations maintain this format for consistency
+Used Q6.10 format (16-bit total, 6 integer bits, 10 fractional bits). All calculations maintain this format for consistency.
 
-### Integration Method
-- 2nd-order Runge-Kutta (RK2) method
-- Two evaluation steps per integration:
-  1. First evaluation at current state
-  2. Second evaluation at predicted state
-  3. Final update using averaged derivatives
-
-### State Machine
-The system uses a 3-state machine:
+Numerical integration is implemented in a 3-state machine:
 1. State 0: Initial evaluation
 2. State 1: Second evaluation at predicted state
 3. State 2: Final update and output
 
 ## Tang Nano 20k Implementation
 
-### Resource Utilization
-- Efficient use of FPGA resources:
-  - DSP blocks for multiplications
-  - LUTs for CORDIC implementation
-  - Block RAM for state storage
-
 ### Interfaces
 - LED outputs for system status
-- UART for parameter configuration and data output
 - Button input for system control
+- UART for data output in a format supported by serial monitor plotter (verified with plotter in Arduino IDE). Transferred $x$ variable is first scaled to 8-bit number, and then transferred as 3 digits via ``uart_tx.v`` module.
 
 ## Simulation
 The testbench (`cos_chaos_top_tb.v`) includes:
 - Clock generation (50 MHz)
 - Reset sequence
 - Button press simulation
-- VCD waveform output for debugging
+- VCD waveform output for debugging.
+This module also simulated UART transfer.
 
 ## Usage
 1. Set initial conditions and parameters (X0, Y0, Z0, a, b, c, μ, ω, h)
 2. Assert reset to initialize system
 3. System runs autonomously after reset
-4. Button presses can trigger specific actions (implementation-dependent)
-
-## Future Enhancements
-1. Real-time parameter adjustment via UART
-2. Chaotic attractor visualization output
-3. Higher-order integration methods
-4. Adaptive step size control
-
-# Testbench Documentation
+4. Button press switches between signes of parameter $c$
 
 ## Testbench Files Overview
 
@@ -192,46 +170,9 @@ This project includes three comprehensive testbenches for verifying different co
 - Outputs results to VCD file for waveform analysis
 - Includes conversion functions between Q6.10 and real numbers
 
-**Test Parameters**:
-```verilog
-parameter CLK_PERIOD = 10;       // 10ns = 100MHz
-parameter START_ANGLE = -9*16'sd1608; // -9π/2
-parameter END_ANGLE = 9*16'sd1608;   // 9π/2
-parameter STEP_ANGLE = 16'sd102;     // 0.1 increment
-parameter PI_Q610 = 16'sd3217;       // π in Q6.10
-```
+### cos_chaos_tb.v
 
-
-### cos_sin_values_tb.v
-
-**Purpose**:  
-Validates the CORDIC cosine/sine generator at critical angular points across all four quadrants.
-
-**Key Features**:
-- Tests four representative angles:
-  - `30°` (π/6, Quadrant I)
-  - `120°` (2π/3, Quadrant II)  
-  - `210°` (7π/6, Quadrant III)
-  - `343°` (343π/180, Quadrant IV)
-- Continuous operation mode with automatic angle sequencing
-- Real-time output of both cosine and sine values
-- Fixed-point Q6.10 format verification
-
-**Test Methodology**:
-1. Initializes with 2-clock cycle delay
-2. Sequentially applies test angles on each `READY` signal
-3. Maintains continuous operation for waveform analysis
-
-**Outputs**:
-- Generates `cos_sin_values.vcd` waveform file
-- Console output for quick verification
-
----
-
-### cos_chaos_optimized_tb.v
-
-**Purpose**:  
-Verifies full chaotic oscillator behavior with predefined parameters and initial conditions.
+**Purpose**:  Verifies full chaotic oscillator behavior with predefined parameters and initial conditions.
 
 **System Configuration**:
 ```verilog
@@ -248,3 +189,6 @@ X₀ = 0.0     // Initial X state
 Y₀ = 5.0     // Initial Y state 
 Z₀ = 0.0     // Initial Z state
 ```
+### cos_chaos_top_tb.v
+
+**Purpose**: Test the overall performance, including chaotic dynamics generation, transferring data via UART and reaction to button presses.
