@@ -5,7 +5,7 @@ Before being implemented in FPGA, the design was developed and verified in MATLA
 
 #### References
 
-1. Xueqing Liu, Bo Sang, Chun Wang, Yan Liu, Cuicui Wang, Irfan Ahmad, Timur Karimov, Vyacheslav Rybin, Denis Butusov, and Ning Wang. Exploring Chameleon Chaos: A Linearly Modulated Generalized Duffing System with Hidden and Self-Excited Attractors. _International Journal of Bifurcation and Chaos_ (2026): 2650074. https://doi.org/10.1142/S0218127426500744
+1. Xueqing Liu, Bo Sang, Chun Wang, Cuicui Wang, Yan Liu, Cuihong Yang, Irfan Ahmad, Timur Karimov, Vyacheslav Rybin, Denis Butusov, and Ning Wang. Exploring Chameleon Chaos: A Linearly Modulated Generalized Duffing System with Hidden and Self-Excited Attractors. _International Journal of Bifurcation and Chaos_ (2026): 2650074. https://doi.org/10.1142/S0218127426500744
 
 # Chaotic Chameleon System in FPGA
 
